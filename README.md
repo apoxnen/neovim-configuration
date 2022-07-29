@@ -1,6 +1,6 @@
 # My neovim setup
 
-This repo exists for me to be able to replicate my vim setup easily on new environments.
+This repo exists for me to be able to replicate my vim setup easily in new environments.
 
 ## Installation
 
