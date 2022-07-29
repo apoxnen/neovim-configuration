@@ -18,7 +18,7 @@ iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
 3. clone this repo to the nvim folder inside AppData by running the following in bash:
 ```
 cd ~/AppData/Local/nvim
-it clone https://github.com/apoxnen/neovim-configuration.git
+git clone https://github.com/apoxnen/neovim-configuration.git
 
 ```
-4. Open nvim and install plugins with ```PlugInstall```
+4. Open nvim and install plugins with ```:PlugInstall```
