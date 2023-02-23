@@ -24,28 +24,46 @@ set noswapfile              " disable creating swap file
 if exists('g:vscode')
     " VSCode extension
 else
-    call plug#begin()
-     Plug 'dracula/vim'
-     Plug 'ryanoasis/vim-devicons'
-     Plug 'SirVer/ultisnips'
-     Plug 'sheerun/vim-polyglot'
-     Plug 'honza/vim-snippets'
-     Plug 'scrooloose/nerdtree'
-     Plug 'preservim/nerdcommenter'
-     Plug 'mhinz/vim-startify'
-     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-     Plug 'vim-airline/vim-airline'
-     " Markdown preview requires nodejs and yarn
-     " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+    " call plug#begin('~/.local/share/nvim/site/autoload/plug.vim')
+    call plug#begin('~/.config/nvim/plugins')
+     Plug 'morhetz/gruvbox' " Theme
+     " Plug 'dracula/vim' " Theme
+     Plug 'ryanoasis/vim-devicons' " Adds file type icons to Vim plugins
+     " Plug 'SirVer/ultisnips' " The ultimate snippet solution for Vim. -
+     " disabled for now as causes some python issues on macos.
+     Plug 'sheerun/vim-polyglot' " A collection of language packs for Vim.
+     Plug 'honza/vim-snippets' " Connects to multiple snippet repos
+     Plug 'scrooloose/nerdtree' " Explorer
+     Plug 'preservim/nerdcommenter' " Comment functions
+     Plug 'mhinz/vim-startify' " A fancy start screen for Vim.
+     Plug 'neoclide/coc.nvim', {'branch': 'release'} " Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers.
+     Plug 'vim-airline/vim-airline' " Lean & mean status/tabline
     call plug#end()
 
+    " Use tab for trigger completion with characters ahead and navigate
+    " NOTE: There's always complete item selected by default, you may want to enable
+    " no select by `"suggest.noselect": true` in your configuration file
+    " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+    " other plugin before putting this into your config
+    inoremap <silent><expr> <TAB>
+          \ coc#pum#visible() ? coc#pum#next(1) :
+          \ CheckBackspace() ? "\<Tab>" :
+          \ coc#refresh()
+    inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+    " Make <CR> to accept selected completion item or notify coc.nvim to format
+    " <C-g>u breaks current undo, please make your own choice
+    inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                                  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
     " Color schemes
+     set termguicolors
     if (has("termguicolors"))
      set termguicolors
      endif
      syntax enable
      " colorscheme evening
-    colorscheme dracula
+    colorscheme gruvbox
     " open new split panes to right and below
     set splitright
     set splitbelow
